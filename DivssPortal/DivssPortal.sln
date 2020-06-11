@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivssPortal", "DivssPortal\DivssPortal.csproj", "{3374B68B-82DB-44AC-8451-1B524298CE7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3374B68B-82DB-44AC-8451-1B524298CE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3374B68B-82DB-44AC-8451-1B524298CE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3374B68B-82DB-44AC-8451-1B524298CE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3374B68B-82DB-44AC-8451-1B524298CE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A800E9D4-74F5-4C8C-9FC2-938BF02BCAD4}
+	EndGlobalSection
+EndGlobal

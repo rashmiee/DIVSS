@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertInvoiceDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvMast" type="tns:INV_MAST" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvDetails" type="tns:ArrayOfINV_DETAILS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="INV_MAST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="INV_NO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INV_DATE" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="INV_TIME" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANY_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USER_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INV_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAINTAINANCE_TYPE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOTAL" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUTO_ID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfINV_DETAILS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="INV_DETAILS" nillable="true" type="tns:INV_DETAILS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="INV_DETAILS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="INV_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ITEMS_FOR_MAINTAINANCE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTY" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PRICE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUB_TOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERVICE_TYPE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SERVICE_PRICE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUB_SERVICE_TOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANY_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ITEM_DESC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUTO_ID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertInvoiceDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertInvoiceDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemDetailsByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemDetailsByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemDetailsByIDResult" type="tns:ITEM_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ITEM_MAST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ITEM_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANY_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ITEM_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MANUFACTURER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COUNTRY" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="STOCK" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PRIZE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUTO_ID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllItemList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllItemListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllItemListResult" type="tns:ArrayOfITEM_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfITEM_MAST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ITEM_MAST" nillable="true" type="tns:ITEM_MAST" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GelAllInvMastDetailsByInvNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GelAllInvMastDetailsByInvNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GelAllInvMastDetailsByInvNoResult" type="tns:INV_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GelAllInvDetail_DetailsByInvNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GelAllInvDetail_DetailsByInvNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GelAllInvDetail_DetailsByInvNoResult" type="tns:ArrayOfINV_DETAILS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestValuesForDashboard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestValuesForDashboardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatestValuesForDashboardResult" type="tns:INV_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCustomerDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VehicleModel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCustomerDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertCustomerDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCustomersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomersResult" type="tns:ArrayOfCUSTOMER_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCUSTOMER_MAST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CUSTOMER_MAST" nillable="true" type="tns:CUSTOMER_MAST" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUSTOMER_MAST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VEHICLE_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PHONE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VISITED_TIME" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUTO_ID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllCustomersByIdLike">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomersByIdLikeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomersByIdLikeResult" type="tns:ArrayOfCUSTOMER_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomersByNameLike">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomersByNameLikeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomersByNameLikeResult" type="tns:ArrayOfCUSTOMER_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomersDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomersDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomersDetailsByIdResult" type="tns:CUSTOMER_MAST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeluserInfoLoging">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeluserInfoLogingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeluserInfoLogingResult" type="tns:USER_INFO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USER_INFO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="USER_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USER_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPLOYEE_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AUTO_ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertuserInfoSignup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertuserInfoSignupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertuserInfoSignupResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ITEM_MAST" nillable="true" type="tns:ITEM_MAST" />
+      <s:element name="ArrayOfITEM_MAST" nillable="true" type="tns:ArrayOfITEM_MAST" />
+      <s:element name="INV_MAST" nillable="true" type="tns:INV_MAST" />
+      <s:element name="ArrayOfINV_DETAILS" nillable="true" type="tns:ArrayOfINV_DETAILS" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfCUSTOMER_MAST" nillable="true" type="tns:ArrayOfCUSTOMER_MAST" />
+      <s:element name="CUSTOMER_MAST" nillable="true" type="tns:CUSTOMER_MAST" />
+      <s:element name="USER_INFO" nillable="true" type="tns:USER_INFO" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertInvoiceDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertInvoiceDetails" />
+  </wsdl:message>
+  <wsdl:message name="InsertInvoiceDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertInvoiceDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemDetailsByID" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemDetailsByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllItemList" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllItemListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GelAllInvMastDetailsByInvNo" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GelAllInvMastDetailsByInvNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GelAllInvDetail_DetailsByInvNo" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GelAllInvDetail_DetailsByInvNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatestValuesForDashboard" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatestValuesForDashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCustomerDetails" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCustomerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersByIdLike" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersByIdLikeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersByNameLike" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersByNameLikeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomersDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomersDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingSoapIn">
+    <wsdl:part name="parameters" element="tns:GeluserInfoLoging" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingSoapOut">
+    <wsdl:part name="parameters" element="tns:GeluserInfoLogingResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertuserInfoSignup" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertuserInfoSignupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDHttpGetIn">
+    <wsdl:part name="ItemCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:ITEM_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemListHttpGetIn" />
+  <wsdl:message name="GetAllItemListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfITEM_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoHttpGetIn">
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:INV_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoHttpGetIn">
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfINV_DETAILS" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardHttpGetIn">
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardHttpGetOut">
+    <wsdl:part name="Body" element="tns:INV_MAST" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsHttpGetIn">
+    <wsdl:part name="CustName" type="s:string" />
+    <wsdl:part name="VehicleModel" type="s:string" />
+    <wsdl:part name="CustPhone" type="s:string" />
+    <wsdl:part name="CustEmail" type="s:string" />
+    <wsdl:part name="CustAddress" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersHttpGetIn" />
+  <wsdl:message name="GetAllCustomersHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeHttpGetIn">
+    <wsdl:part name="CustId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeHttpGetIn">
+    <wsdl:part name="CustName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdHttpGetIn">
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:CUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingHttpGetIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingHttpGetOut">
+    <wsdl:part name="Body" element="tns:USER_INFO" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupHttpGetIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDHttpPostIn">
+    <wsdl:part name="ItemCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetItemDetailsByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ITEM_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllItemListHttpPostIn" />
+  <wsdl:message name="GetAllItemListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfITEM_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoHttpPostIn">
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvMastDetailsByInvNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:INV_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoHttpPostIn">
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GelAllInvDetail_DetailsByInvNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfINV_DETAILS" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardHttpPostIn">
+    <wsdl:part name="CompId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestValuesForDashboardHttpPostOut">
+    <wsdl:part name="Body" element="tns:INV_MAST" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsHttpPostIn">
+    <wsdl:part name="CustName" type="s:string" />
+    <wsdl:part name="VehicleModel" type="s:string" />
+    <wsdl:part name="CustPhone" type="s:string" />
+    <wsdl:part name="CustEmail" type="s:string" />
+    <wsdl:part name="CustAddress" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersHttpPostIn" />
+  <wsdl:message name="GetAllCustomersHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeHttpPostIn">
+    <wsdl:part name="CustId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByIdLikeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeHttpPostIn">
+    <wsdl:part name="CustName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomersByNameLikeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdHttpPostIn">
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:CUSTOMER_MAST" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingHttpPostIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GeluserInfoLogingHttpPostOut">
+    <wsdl:part name="Body" element="tns:USER_INFO" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupHttpPostIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertuserInfoSignupHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="DivssServiceSoap">
+    <wsdl:operation name="InsertInvoiceDetails">
+      <wsdl:input message="tns:InsertInvoiceDetailsSoapIn" />
+      <wsdl:output message="tns:InsertInvoiceDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetailsByID">
+      <wsdl:input message="tns:GetItemDetailsByIDSoapIn" />
+      <wsdl:output message="tns:GetItemDetailsByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <wsdl:input message="tns:GetAllItemListSoapIn" />
+      <wsdl:output message="tns:GetAllItemListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvMastDetailsByInvNoSoapIn" />
+      <wsdl:output message="tns:GelAllInvMastDetailsByInvNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvDetail_DetailsByInvNoSoapIn" />
+      <wsdl:output message="tns:GelAllInvDetail_DetailsByInvNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <wsdl:input message="tns:GetLatestValuesForDashboardSoapIn" />
+      <wsdl:output message="tns:GetLatestValuesForDashboardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <wsdl:input message="tns:InsertCustomerDetailsSoapIn" />
+      <wsdl:output message="tns:InsertCustomerDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input message="tns:GetAllCustomersSoapIn" />
+      <wsdl:output message="tns:GetAllCustomersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <wsdl:input message="tns:GetAllCustomersByIdLikeSoapIn" />
+      <wsdl:output message="tns:GetAllCustomersByIdLikeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <wsdl:input message="tns:GetAllCustomersByNameLikeSoapIn" />
+      <wsdl:output message="tns:GetAllCustomersByNameLikeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <wsdl:input message="tns:GetCustomersDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetCustomersDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <wsdl:input message="tns:GeluserInfoLogingSoapIn" />
+      <wsdl:output message="tns:GeluserInfoLogingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <wsdl:input message="tns:InsertuserInfoSignupSoapIn" />
+      <wsdl:output message="tns:InsertuserInfoSignupSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DivssServiceHttpGet">
+    <wsdl:operation name="GetItemDetailsByID">
+      <wsdl:input message="tns:GetItemDetailsByIDHttpGetIn" />
+      <wsdl:output message="tns:GetItemDetailsByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <wsdl:input message="tns:GetAllItemListHttpGetIn" />
+      <wsdl:output message="tns:GetAllItemListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvMastDetailsByInvNoHttpGetIn" />
+      <wsdl:output message="tns:GelAllInvMastDetailsByInvNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvDetail_DetailsByInvNoHttpGetIn" />
+      <wsdl:output message="tns:GelAllInvDetail_DetailsByInvNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <wsdl:input message="tns:GetLatestValuesForDashboardHttpGetIn" />
+      <wsdl:output message="tns:GetLatestValuesForDashboardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <wsdl:input message="tns:InsertCustomerDetailsHttpGetIn" />
+      <wsdl:output message="tns:InsertCustomerDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input message="tns:GetAllCustomersHttpGetIn" />
+      <wsdl:output message="tns:GetAllCustomersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <wsdl:input message="tns:GetAllCustomersByIdLikeHttpGetIn" />
+      <wsdl:output message="tns:GetAllCustomersByIdLikeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <wsdl:input message="tns:GetAllCustomersByNameLikeHttpGetIn" />
+      <wsdl:output message="tns:GetAllCustomersByNameLikeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <wsdl:input message="tns:GetCustomersDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetCustomersDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <wsdl:input message="tns:GeluserInfoLogingHttpGetIn" />
+      <wsdl:output message="tns:GeluserInfoLogingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <wsdl:input message="tns:InsertuserInfoSignupHttpGetIn" />
+      <wsdl:output message="tns:InsertuserInfoSignupHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DivssServiceHttpPost">
+    <wsdl:operation name="GetItemDetailsByID">
+      <wsdl:input message="tns:GetItemDetailsByIDHttpPostIn" />
+      <wsdl:output message="tns:GetItemDetailsByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <wsdl:input message="tns:GetAllItemListHttpPostIn" />
+      <wsdl:output message="tns:GetAllItemListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvMastDetailsByInvNoHttpPostIn" />
+      <wsdl:output message="tns:GelAllInvMastDetailsByInvNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <wsdl:input message="tns:GelAllInvDetail_DetailsByInvNoHttpPostIn" />
+      <wsdl:output message="tns:GelAllInvDetail_DetailsByInvNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <wsdl:input message="tns:GetLatestValuesForDashboardHttpPostIn" />
+      <wsdl:output message="tns:GetLatestValuesForDashboardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <wsdl:input message="tns:InsertCustomerDetailsHttpPostIn" />
+      <wsdl:output message="tns:InsertCustomerDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input message="tns:GetAllCustomersHttpPostIn" />
+      <wsdl:output message="tns:GetAllCustomersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <wsdl:input message="tns:GetAllCustomersByIdLikeHttpPostIn" />
+      <wsdl:output message="tns:GetAllCustomersByIdLikeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <wsdl:input message="tns:GetAllCustomersByNameLikeHttpPostIn" />
+      <wsdl:output message="tns:GetAllCustomersByNameLikeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <wsdl:input message="tns:GetCustomersDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetCustomersDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <wsdl:input message="tns:GeluserInfoLogingHttpPostIn" />
+      <wsdl:output message="tns:GeluserInfoLogingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <wsdl:input message="tns:InsertuserInfoSignupHttpPostIn" />
+      <wsdl:output message="tns:InsertuserInfoSignupHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DivssServiceSoap" type="tns:DivssServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertInvoiceDetails">
+      <soap:operation soapAction="http://tempuri.org/InsertInvoiceDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetailsByID">
+      <soap:operation soapAction="http://tempuri.org/GetItemDetailsByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <soap:operation soapAction="http://tempuri.org/GetAllItemList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <soap:operation soapAction="http://tempuri.org/GelAllInvMastDetailsByInvNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <soap:operation soapAction="http://tempuri.org/GelAllInvDetail_DetailsByInvNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <soap:operation soapAction="http://tempuri.org/GetLatestValuesForDashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <soap:operation soapAction="http://tempuri.org/InsertCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomersByIdLike" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomersByNameLike" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetCustomersDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <soap:operation soapAction="http://tempuri.org/GeluserInfoLoging" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <soap:operation soapAction="http://tempuri.org/InsertuserInfoSignup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DivssServiceSoap12" type="tns:DivssServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertInvoiceDetails">
+      <soap12:operation soapAction="http://tempuri.org/InsertInvoiceDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemDetailsByID">
+      <soap12:operation soapAction="http://tempuri.org/GetItemDetailsByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <soap12:operation soapAction="http://tempuri.org/GetAllItemList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <soap12:operation soapAction="http://tempuri.org/GelAllInvMastDetailsByInvNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <soap12:operation soapAction="http://tempuri.org/GelAllInvDetail_DetailsByInvNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <soap12:operation soapAction="http://tempuri.org/GetLatestValuesForDashboard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <soap12:operation soapAction="http://tempuri.org/InsertCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomersByIdLike" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomersByNameLike" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomersDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <soap12:operation soapAction="http://tempuri.org/GeluserInfoLoging" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <soap12:operation soapAction="http://tempuri.org/InsertuserInfoSignup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DivssServiceHttpGet" type="tns:DivssServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetItemDetailsByID">
+      <http:operation location="/GetItemDetailsByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <http:operation location="/GetAllItemList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <http:operation location="/GelAllInvMastDetailsByInvNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <http:operation location="/GelAllInvDetail_DetailsByInvNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <http:operation location="/GetLatestValuesForDashboard" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <http:operation location="/InsertCustomerDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <http:operation location="/GetAllCustomers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <http:operation location="/GetAllCustomersByIdLike" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <http:operation location="/GetAllCustomersByNameLike" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <http:operation location="/GetCustomersDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <http:operation location="/GeluserInfoLoging" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <http:operation location="/InsertuserInfoSignup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DivssServiceHttpPost" type="tns:DivssServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetItemDetailsByID">
+      <http:operation location="/GetItemDetailsByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemList">
+      <http:operation location="/GetAllItemList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvMastDetailsByInvNo">
+      <http:operation location="/GelAllInvMastDetailsByInvNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GelAllInvDetail_DetailsByInvNo">
+      <http:operation location="/GelAllInvDetail_DetailsByInvNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestValuesForDashboard">
+      <http:operation location="/GetLatestValuesForDashboard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerDetails">
+      <http:operation location="/InsertCustomerDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <http:operation location="/GetAllCustomers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByIdLike">
+      <http:operation location="/GetAllCustomersByIdLike" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomersByNameLike">
+      <http:operation location="/GetAllCustomersByNameLike" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersDetailsById">
+      <http:operation location="/GetCustomersDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeluserInfoLoging">
+      <http:operation location="/GeluserInfoLoging" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertuserInfoSignup">
+      <http:operation location="/InsertuserInfoSignup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DivssService">
+    <wsdl:port name="DivssServiceSoap" binding="tns:DivssServiceSoap">
+      <soap:address location="http://localhost/DivssService/DivssService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DivssServiceSoap12" binding="tns:DivssServiceSoap12">
+      <soap12:address location="http://localhost/DivssService/DivssService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DivssServiceHttpGet" binding="tns:DivssServiceHttpGet">
+      <http:address location="http://localhost/DivssService/DivssService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DivssServiceHttpPost" binding="tns:DivssServiceHttpPost">
+      <http:address location="http://localhost/DivssService/DivssService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
